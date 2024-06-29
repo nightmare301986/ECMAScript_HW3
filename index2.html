@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class Order {
+            constructor(orderNumber) {
+                this.orderNumber = orderNumber;
+
+                this.products = [];
+            }
+
+            addProduct(product) {
+                this.products.push(product);
+            }
+
+            getTotalPrice() {
+                if (this.products?.length) {
+                    let sum = 0;
+                    this.products.forEach((element) => {
+                        sum += element.price;
+                    });
+                    return `Total sum: ${sum}`;
+                }
+                return "Заказ создан, но пуст (нет позиций)";
+            }
+
+        }
+        class Product {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+        }
+        const order = new Order(12345);
+        const product1 = new Product("Phone", 500);
+        order.addProduct(product1);
+        const product2 = new Product("Headphones", 100);
+        order.addProduct(product2);
+
+        console.log(order.getTotalPrice());
+    </script>
+</body>
+
+</html>
